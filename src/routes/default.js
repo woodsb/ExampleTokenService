@@ -1,12 +1,11 @@
 import express from 'express';
-import { getToken } from '../controllers/tokenController';
 
 const router = express.Router();
 
-/* GET users listing. */
-router.get('/health', (req, res) => {
+// Would include other health metrics, deep health check, version, etc in this router.
+router.get('/', (req, res) => {
   res.status(200);
-  req.send({
+  res.send({
     status: 'ok',
   });
 });

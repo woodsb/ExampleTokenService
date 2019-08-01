@@ -3,6 +3,7 @@ import express from 'express';
 import logger from 'morgan';
 import path from 'path';
 import tokenRouter from './routes/token';
+import defaultRouter from './routes/default';
 
 const app = express();
 
@@ -11,6 +12,8 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/health', defaultRouter);
 
 app.use('/token', tokenRouter);
 
